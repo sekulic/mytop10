@@ -15,6 +15,7 @@ Bundler.require(*Rails.groups)
 
 module Mytop10
   class Application < Rails::Application
+  config.serve_static_assets = true
   config.assets.precompile += %w( amelia.css )
   config.assets.precompile += %w( amelia.js )
     # Settings in config/environments/* take precedence over those specified here.
