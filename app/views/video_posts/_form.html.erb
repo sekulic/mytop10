@@ -1,0 +1,151 @@
+<%= form_for @video_post, :html => { :multipart => true }, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @video_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video_post.errors.count, "error") %> prohibited this video_post from being saved:</h2>
+
+      <ul>
+      <% @video_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label "Title", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_field :title, :class => 'form-control', :id => "Input", :placeholder => "Video Post Title" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Category", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+ 	<%= f.select :category_id, @categories, {prompt: 'Select Category'}, :class => 'form-control'%>
+    </div>
+  </div>
+  
+  <div class="form-group" id="hiden_select_sub">
+    <%= f.label "Subcategory", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-2">
+ 	<%= f.grouped_collection_select(:subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, {}, { :class=> "form-control" }) %>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <%= f.label "Text10", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text10, :class => 'form-control', :id => "Input", :placeholder => "Text10" %>
+    </div>
+    <%= f.label "Link10", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link10, :class => 'form-control', :id => "Input", :placeholder => "Link10" %>
+    </div>    
+  </div> 
+
+  <div class="form-group">
+    <%= f.label "Text9", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text9, :class => 'form-control', :id => "Input", :placeholder => "Text9" %>
+    </div>
+    <%= f.label "Link9", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link9, :class => 'form-control', :id => "Input", :placeholder => "Link9" %>
+    </div>    
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Text8", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text8, :class => 'form-control', :id => "Input", :placeholder => "Text8" %>
+    </div>
+    <%= f.label "Link8", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link8, :class => 'form-control', :id => "Input", :placeholder => "Link8" %>
+    </div>    
+  </div> 
+
+  <div class="form-group">
+    <%= f.label "Text7", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text7, :class => 'form-control', :id => "Input", :placeholder => "Text7" %>
+    </div>
+    <%= f.label "Link7", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link7, :class => 'form-control', :id => "Input", :placeholder => "Link7" %>
+    </div>    
+  </div>
+  
+  <div class="form-group">
+    <%= f.label "Text6", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text6, :class => 'form-control', :id => "Input", :placeholder => "Text6" %>
+    </div>
+    <%= f.label "Link6", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link6, :class => 'form-control', :id => "Input", :placeholder => "Link6" %>
+    </div>    
+  </div> 
+
+  <div class="form-group">
+    <%= f.label "Text5", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text5, :class => 'form-control', :id => "Input", :placeholder => "Text5" %>
+    </div>
+    <%= f.label "Link5", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link5, :class => 'form-control', :id => "Input", :placeholder => "Link5" %>
+    </div>    
+  </div>  
+
+  <div class="form-group">
+    <%= f.label "Text4", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text4, :class => 'form-control', :id => "Input", :placeholder => "Text4" %>
+    </div>
+    <%= f.label "Link4", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link4, :class => 'form-control', :id => "Input", :placeholder => "Link4" %>
+    </div>    
+  </div> 
+
+  <div class="form-group">
+    <%= f.label "Text3", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text3, :class => 'form-control', :id => "Input", :placeholder => "Text3" %>
+    </div>
+    <%= f.label "Link3", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link3, :class => 'form-control', :id => "Input", :placeholder => "Link3" %>
+    </div>    
+  </div>
+  
+  <div class="form-group">
+    <%= f.label "Text2", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text2, :class => 'form-control', :id => "Input", :placeholder => "Text2" %>
+    </div>
+    <%= f.label "Link2", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link2, :class => 'form-control', :id => "Input", :placeholder => "Link2" %>
+    </div>    
+  </div> 
+
+  <div class="form-group">
+    <%= f.label "Text1", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :text1, :class => 'form-control', :id => "Input", :placeholder => "Text1" %>
+    </div>
+    <%= f.label "Link1", :class => 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_area :link1, :class => 'form-control', :id => "Input", :placeholder => "Link1" %>
+    </div>    
+  </div>  
+  <div class="form-group">
+  	<div class="col-lg-4 col-lg-offset-2">
+    <%= f.submit "Save", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                video_posts_path, :class => 'btn btn-danger' %>
+  	</div>
+  </div>
+<% end %>

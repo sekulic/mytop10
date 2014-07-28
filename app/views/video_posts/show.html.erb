@@ -1,0 +1,153 @@
+<div class="row">
+<div class="col-lg-8 well bs-component">
+
+
+  <h1><%= @video_post.title %></h1>
+	<p><span class="badge"><%= @video_post.created_at.to_date.to_s(:long) %></span></p>  
+
+	<h3 class="h3-back btn-primary">#10</h3>
+	<%= simple_format(@video_post.text10) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link10%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>
+	
+	<div class="row show-space"></div>
+	
+	<h3 class="h3-back btn-primary">#9</h3>
+	<%= simple_format(@video_post.text9) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link9%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>
+	
+	<div class="row show-space"></div>
+	
+	<h3 class="h3-back btn-primary">#8</h3>
+	<%= simple_format(@video_post.text8) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link8%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>		
+	
+	<div class="row show-space"></div>
+
+	<h3 class="h3-back btn-primary">#7</h3>
+	<%= simple_format(@video_post.text7) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link7%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>
+	
+	<div class="row show-space"></div>
+	
+	<h3 class="h3-back btn-primary">#6</h3>
+	<%= simple_format(@video_post.text6) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link6%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>
+	
+	<div class="row show-space"></div>
+	
+	<h3 class="h3-back btn-primary">#5</h3>
+	<%= simple_format(@video_post.text5) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link5%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>
+	
+	<div class="row show-space"></div>
+	
+	<h3 class="h3-back btn-primary">#4</h3>
+	<%= simple_format(@video_post.text4) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link4%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>
+	
+	<div class="row show-space"></div>
+	
+	<h3 class="h3-back btn-primary">#3</h3>
+	<%= simple_format(@video_post.text3) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link3%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>
+	
+	<div class="row show-space"></div>
+	
+	<h3 class="h3-back btn-primary">#2</h3>
+	<%= simple_format(@video_post.text2) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link2%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>	
+	
+	<div class="row show-space"></div>
+	
+	<h3 class="h3-back btn-primary">#1</h3>
+	<%= simple_format(@video_post.text1) %>
+	<div class="video-cont">
+		<iframe src="//www.youtube.com/embed/<%=@video_post.link1%>" frameborder="0" allowfullscreen>	
+		</iframe>
+	</div>
+<% if current_user.try(:admin?) %>
+<div class="alert alert-dismissable alert-warning">
+	<h4>Just for Admin</h4>
+	<%= link_to 'Edit Video post', edit_video_post_path(@video_post), :class => 'btn btn-primary' %>
+	<%= link_to 'Back to Video posts', video_posts_path, :class => 'btn btn-danger' %>
+</div>	
+<% end %>
+
+
+<div class="well bs-component">
+	<div id="video_comment_errors" class="alert alert-dismissable alert-danger">
+	</div>	
+<script>$('#video_comment_errors').hide();</script>		
+<%= form_for(@video_comment, remote: true, :html => { :class => 'form-horizontal' }) do |f| %> 
+<legend>Post Comment</legend>
+  <div class="form-group">
+    <%= f.label :name, :class => 'col-lg-3 control-label' %>
+    <div class="col-lg-6">
+      <%= f.text_field :name, :class => 'form-control', :placeholder => "Your name here" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :comment, :class => 'col-lg-3 control-label' %>
+    <div class="col-lg-6">
+      <%= f.text_area :comment, :class => 'form-control', :placeholder => "Your comment here" %>
+    </div>
+  </div>
+  <%= f.hidden_field :video_post_id, :value => @video_post.id %> 
+  <div class="form-group">
+  	<div class="col-lg-6 col-lg-offset-3">
+    <%= f.submit "Post Comment", :class => 'btn btn-primary' %>
+  	</div>
+  </div>    
+<% end %>
+<ul id="list-video-comm" class="list-group">
+<% @video_comments.each do |video_comm| %>
+  <li class="list-group-item">
+  	<span class="badge"><%= video_comm.created_at.to_date.to_s(:long) %></span>
+	<h4  class="list-group-item-heading">Comment:</h4> <p class="lead"><%= video_comm.comment %></p>
+	<p class="text-primary">Comment posted by::&nbsp;<font color="black"><%= video_comm.name %></font></p>
+	<% if current_user.try(:admin?) %>
+	<%= link_to 'Delete comment', delete_video_comment_path(video_comm), :remote => true, class: "article" %>
+	<% end %>	
+  </li>
+<% end %>
+</ul>
+</div> 
+
+</div>
+<div class="col-lg-4">
+	
+</div>
+</div>
+<script>
+$( ".article" ).click(function() {
+$( this ).parent().html('<h4>Comment deleted successfuly</h4>');
+});
+</script>

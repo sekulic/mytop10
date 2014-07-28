@@ -1,0 +1,232 @@
+<div class="row">
+<div class="col-lg-8 well bs-component">
+	  <h1><%= @photo_post.title %></h1>
+	  <span class="badge"><%= @photo_post.created_at.to_date.to_s(:long) %></span>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="7"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="8"></li>        
+    <li data-target="#carousel-example-generic" data-slide-to="9"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+     <%= image_tag @photo_post.photo10.url(:medium) %>
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        <p class="text-success"><%= simple_format(@photo_post.text10) %></p>	
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>		
+	
+      </div>	    
+    </div>
+    <div class="item">
+     <%= image_tag @photo_post.photo9.url(:medium) %>
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        	<%= simple_format(@photo_post.text9) %>
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>		
+	
+      </div>
+    </div> 
+    <div class="item">
+     <%= image_tag @photo_post.photo8.url(:medium) %>
+ 
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        	<%= simple_format(@photo_post.text8) %>
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>			
+      </div>
+    </div> 
+    <div class="item">
+     <%= image_tag @photo_post.photo7.url(:medium) %>
+      <div class="carousel-caption">
+      	<div class="row">
+
+        <div class="col-lg-12 photo-back">
+        	<%= simple_format(@photo_post.text7)%>
+        </div>
+        </div>		
+      </div>
+    </div>    
+    <div class="item">
+     <%= image_tag @photo_post.photo6.url(:medium) %>
+    <a href="/forum">
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        	<%= simple_format(@photo_post.text6) %>
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>			
+      </div>
+	</a>
+    </div> 
+    <div class="item">
+     <%= image_tag @photo_post.photo5.url(:medium) %>
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        	<%= simple_format(@photo_post.text5) %>
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>		
+      </div>
+    </div>   
+        <div class="item">
+     <%= image_tag @photo_post.photo4.url(:medium) %>
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        	<%= simple_format(@photo_post.text4) %>
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>		
+      </div>
+    </div> 
+    <div class="item">
+     <%= image_tag @photo_post.photo3.url(:medium) %>
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        	<%= simple_format(@photo_post.text3) %>
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>		
+      </div>
+    </div>   
+        <div class="item">
+     <%= image_tag @photo_post.photo2.url(:medium) %>
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        	<%= simple_format(@photo_post.text2) %>
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>		
+      </div>
+    </div> 
+    <div class="item">
+     <%= image_tag @photo_post.photo1.url(:medium) %>
+      <div class="carousel-caption">
+      	<div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10 photo-back">
+        	<%= simple_format(@photo_post.text1) %>
+        </div>
+        <div class="col-lg-1">
+        </div>
+        </div>			
+      </div>
+    </div>          
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+<br />
+<% if current_user.try(:admin?) %>
+<div class="alert alert-dismissable alert-warning">
+	<h4>Just for Admin</h4>
+	<%= link_to 'Edit Photo post', edit_photo_post_path(@photo_post), :class => 'btn btn-primary' %>
+	<%= link_to 'Back to Photo posts', photo_posts_path, :class => 'btn btn-danger' %>
+</div>	
+<% end %>
+
+<div class="well bs-component">
+	<div id="photo_comment_errors" class="alert alert-dismissable alert-danger">
+	</div>	
+<script>$('#photo_comment_errors').hide();</script>		
+<%= form_for(@photo_comment, remote: true, :html => { :class => 'form-horizontal' }) do |f| %> 
+<legend>Post Comment</legend>
+  <div class="form-group">
+    <%= f.label :name, :class => 'col-lg-3 control-label' %>
+    <div class="col-lg-6">
+      <%= f.text_field :name, :class => 'form-control', :placeholder => "Your name here" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :comment, :class => 'col-lg-3 control-label' %>
+    <div class="col-lg-6">
+      <%= f.text_area :comment, :class => 'form-control', :placeholder => "Your comment here" %>
+    </div>
+  </div>
+  <%= f.hidden_field :photo_post_id, :value => @photo_post.id %> 
+  <div class="form-group">
+  	<div class="col-lg-6 col-lg-offset-3">
+    <%= f.submit "Post Comment", :class => 'btn btn-primary' %>
+  	</div>
+  </div>    
+<% end %>
+<ul id="list-photo-comm" class="list-group">
+<% @photo_comments.each do |photo_comm| %>
+  <li class="list-group-item">
+  	<span class="badge"><%= photo_comm.created_at.to_date.to_s(:long) %></span>
+<h4  class="list-group-item-heading">Comment:</h4> <p class="lead"><%= photo_comm.comment %></p>
+<p class="text-primary">Comment posted by::&nbsp;<font color="black"><%= photo_comm.name %></font></p>
+<% if current_user.try(:admin?) %>
+<%= link_to 'Delete comment', delete_photo_comment_path(photo_comm), :remote => true, class: "article" %>
+<% end %>
+  </li>
+<% end %>
+</ul>
+</div>
+
+
+
+</div>
+<div class="col-lg-4">
+</div>
+</div>
+<script>
+$( ".article" ).click(function() {
+$( this ).parent().html('<h4>Comment deleted successfuly</h4>');
+});
+</script>

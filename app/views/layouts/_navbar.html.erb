@@ -1,0 +1,78 @@
+    <div class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MyTop10.info</a>
+        </div>
+        <div class="navbar-collapse collapse">
+        	
+     <ul class="nav navbar-nav">
+            <li class="<%=is_active_page?(root_path)%>"><%= link_to "Home", root_path %></li>
+		    <% vp = "" %>
+		    <% vp = "active" if params.has_key?(:video_p)  %>
+            <li class="<%= vp %>"><%= link_to "Video Posts", root_path(:video_p => "video_p") %></li>
+		    <% pp = "" %>
+		    <% pp = "active" if params.has_key?(:photo_p)  %>            
+            <li class="<%= pp %>"><%= link_to "Photo Posts", root_path(:photo_p => "photo_p") %></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+        <% if params.has_key?(:category_id)  %>	
+	        <% Category.all.each do |category|%>
+	        <% category.id == params[:category_id].to_i ? cid = "disabled" : cid = ""  %>
+	         <li class="<%=cid%>"><%= link_to category.name, root_path(:category_id => category.id) %></li>
+	        <% end %>
+        <% else %>
+	        <% Category.all.each do |category|%>
+	         <li><%= link_to category.name, root_path(:category_id => category.id) %></li>
+	        <% end %>        
+        <% end %>
+          <li class="divider"></li>
+          <li><a href="#"><%= link_to "All Categories", root_path %></a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Subcategories <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+
+        <% if params.has_key?(:subcategory_id)  %>	
+	        <% Subcategory.all.group_by(&:category_id).each do |category, subcategories| %>
+	        <% cat = Category.find(category) %>
+	          <li class="dropdown-header devide"><%= cat.name %></li>
+	  			<% subcategories.each do |subcategory| %>
+	  			<% subcategory.id == params[:subcategory_id].to_i ? sid = "disabled" : sid = ""  %>
+	    		<li class="<%=sid%>"><%= link_to subcategory.name, root_path(:subcategory_id => subcategory.id) %></li>
+	  			<% end %>
+	  		  <li class="divider"></li>
+			<% end %>        
+        <% else %>
+	        <% Subcategory.all.group_by(&:category_id).each do |category, subcategories| %>
+	        <% cat = Category.find(category) %>
+	          <li class="dropdown-header devide"><%= cat.name %></li>
+	  			<% subcategories.each do |subcategory| %>
+	    		<li><%= link_to subcategory.name, root_path(:subcategory_id => subcategory.id) %></li>
+	  			<% end %>
+	  		  <li class="divider"></li>
+			<% end %>        
+        <% end %>
+      
+          <li><a href="#"><%= link_to "All Subcategories", root_path %></a></li>
+        </ul>
+      </li>  
+    </ul>    
+            <% if current_user.try(:admin?) %>
+            <ul class="nav navbar-nav navbar-right">
+            <li class="<%=is_active_page?(categories_path)%>"><%= link_to "Categories", categories_path %></li>
+            <li class="<%=is_active_page?(subcategories_path)%>"><%= link_to "Subcategories", subcategories_path %></li>
+            <li class="<%=is_active_page?(video_posts_path)%>"><%= link_to "VideoPosts", video_posts_path %></li>
+            <li class="<%=is_active_page?(photo_posts_path)%>"><%= link_to "PhotoPosts", photo_posts_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+            </ul>
+            <% end %>                                                        
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>	

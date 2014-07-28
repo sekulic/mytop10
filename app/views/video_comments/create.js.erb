@@ -1,0 +1,8 @@
+<% if @video_comment.errors.any? %>
+$('#video_comment_errors').show();      
+$('#video_comment_errors').html('<strong>Please correct the folowing: </strong><%= pluralize(@video_comment.errors.count, "error") %><p><ul><%@video_comment.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %></ul></p>');
+<% else %> 
+$('ul#list-video-comm').prepend('<li class="list-group-item"><span class="badge"><%= @video_comment.created_at.to_date.to_s(:long) %></span><h4  class="list-group-item-heading">Comment:</h4> <p class="lead"><%= @video_comment.comment %></p><p class="text-primary">Comment posted by::&nbsp;<font color="black"><%= @video_comment.name %></font></p></li>');
+$('#video_comment_comment').val('');
+$('#video_comment_name').val('');
+<% end %>
