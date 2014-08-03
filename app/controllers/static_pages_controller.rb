@@ -11,14 +11,16 @@ include StaticPagesHelper
         @video_posts = VideoPost.where(:subcategory_id => params[:subcategory_id])
         @photo_posts = PhotoPost.where(:subcategory_id => params[:subcategory_id])
         sort_for_index(@video_posts, @photo_posts)
-      elsif params.has_key?(:video_p)
-        @video_posts = VideoPost.all
-        @photo_posts = []
-        sort_for_index(@video_posts, @photo_posts)
-      elsif params.has_key?(:photo_p)
-        @video_posts = []
-        @photo_posts = PhotoPost.all
-        sort_for_index(@video_posts, @photo_posts)            
+      elsif params.has_key?(:type)
+        if params[:type] == "video"
+          @video_posts = VideoPost.all
+          @photo_posts = []
+          sort_for_index(@video_posts, @photo_posts)
+        elsif params[:type] == "photo"
+          @video_posts = []
+          @photo_posts = PhotoPost.all
+          sort_for_index(@video_posts, @photo_posts)             
+        end        
       else
         @video_posts = VideoPost.all
         @photo_posts = PhotoPost.all

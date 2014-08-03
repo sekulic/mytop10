@@ -1,4 +1,5 @@
 class PhotoPostsController < ApplicationController
+  include PhotoPostsHelper
   include ApplicationHelper
   before_action :set_photo_post, only: [:show, :edit, :update, :destroy]
   before_filter :access, :except => :show
@@ -9,10 +10,15 @@ class PhotoPostsController < ApplicationController
   end
 
   # GET /photo_posts/1
-  # GET /photo_posts/1.json
+  # GET /photo_posts/1.json.find(params[:id])
   def show
     @photo_comment = PhotoComment.new
-    @photo_comments = PhotoComment.where(:photo_post_id => @photo_post.id).order("created_at DESC")    
+    @photo_comments = PhotoComment.where(:photo_post_id => @photo_post.id).order("created_at DESC")  
+    @video_posts = VideoPost.where(:category_id => @photo_post.category_id)
+    @photo_posts = PhotoPost.where(:category_id => @photo_post.category_id)
+    @filter = sort_for_show(@video_posts, @photo_posts)
+    @filter.delete_if {|x| x[:id] == @photo_post.id }
+    @posts =  @filter     
   end
 
   # GET /photo_posts/new

@@ -13,11 +13,11 @@
      <ul class="nav navbar-nav">
             <li class="<%=is_active_page?(root_path)%>"><%= link_to "Home", root_path %></li>
 		    <% vp = "" %>
-		    <% vp = "active" if params.has_key?(:video_p)  %>
-            <li class="<%= vp %>"><%= link_to "Video Posts", root_path(:video_p => "video_p") %></li>
+		    <% vp = "active" if params.has_key?(:type) && params[:type] == "video"  %>
+            <li class="<%= vp %>"><%= link_to "Video Posts", root_path(:type => "video") %></li>
 		    <% pp = "" %>
-		    <% pp = "active" if params.has_key?(:photo_p)  %>            
-            <li class="<%= pp %>"><%= link_to "Photo Posts", root_path(:photo_p => "photo_p") %></li>
+		    <% pp = "active" if params.has_key?(:type) && params[:type] == "photo"  %>            
+            <li class="<%= pp %>"><%= link_to "Photo Posts", root_path(:type => "photo") %></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
         <ul class="dropdown-menu">

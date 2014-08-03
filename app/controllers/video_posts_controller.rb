@@ -1,4 +1,5 @@
 class VideoPostsController < ApplicationController
+  include PhotoPostsHelper
   include ApplicationHelper  
   before_action :set_video_post, only: [:show, :edit, :update, :destroy]
   before_filter :access, :except => :show
@@ -13,6 +14,11 @@ class VideoPostsController < ApplicationController
   def show
     @video_comment = VideoComment.new
     @video_comments = VideoComment.where(:video_post_id => @video_post.id).order("created_at DESC")
+    @video_posts = VideoPost.where(:category_id => @video_post.category_id)
+    @photo_posts = PhotoPost.where(:category_id => @video_post.category_id)
+    @filter = sort_for_show(@video_posts, @photo_posts)
+    @filter.delete_if {|x| x[:id] == @video_post.id }
+    @posts =  @filter        
   end
 
   # GET /video_posts/new
