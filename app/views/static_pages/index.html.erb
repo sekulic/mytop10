@@ -42,7 +42,8 @@
 	  <% idx = idx + 1 %>
 	  <% if(idx % 5 == 0) %>  
 	  <% idx = 1 %>
-	  <% elsif(idx % 4 == 0) %>
+	  <% end %>
+	  <% if(idx % 4 == 0) %>
 	  	<tr  class="warning">
 	  <% elsif(idx % 3 == 0) %>
 	  	<tr  class="danger">

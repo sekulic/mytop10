@@ -12,7 +12,7 @@ module PhotoPostsHelper
         @postss.push(tmp)
       end      
       @postss = @postss.sort_by { |hsh| hsh[:created_at] }.reverse! 
-      @postss = @postss.paginate(:page => params[:page], :per_page => 15)
+      @postss = @postss.paginate(:page => params[:page], :per_page => 12)
       return @postss
     end   
 end

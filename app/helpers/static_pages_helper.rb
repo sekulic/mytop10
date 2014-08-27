@@ -12,7 +12,7 @@ module StaticPagesHelper
         @posts.push(tmp)
       end
       @posts = @posts.sort_by { |hsh| hsh[:created_at] }.reverse!      
-      @posts = @posts.paginate(:page => params[:page], :per_page => 15)
+      @posts = @posts.paginate(:page => params[:page], :per_page => 12)
     end 
     def sort_for_index_post(video_posts, photo_posts)
       @postss = Array.new
@@ -27,7 +27,7 @@ module StaticPagesHelper
         @postss.push(tmp)
       end      
       @postss = @postss.sort_by { |hsh| hsh[:created_at] }.reverse! 
-      @postss = @postss.paginate(:page => params[:page], :per_page => 15)
+      @postss = @postss.paginate(:page => params[:page], :per_page => 12)
       return @postss
     end   
 end
