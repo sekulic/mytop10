@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-lg-8 well bs-component">
+<div class="col-lg-8 col-md-8 well bs-component">
 
 
   <h1><%= @video_post.title %></h1>
@@ -108,21 +108,21 @@
 <%= form_for(@video_comment, remote: true, :html => { :class => 'form-horizontal' }) do |f| %> 
 <legend>Post Comment</legend>
   <div class="form-group">
-    <%= f.label :name, :class => 'col-lg-3 control-label' %>
-    <div class="col-lg-6">
+    <%= f.label :name, :class => 'col-lg-3 col-md-3 control-label' %>
+    <div class="col-lg-6 col-md-6">
       <%= f.text_field :name, :class => 'form-control', :placeholder => "Your name here" %>
     </div>
   </div>
   
   <div class="form-group">
-    <%= f.label :comment, :class => 'col-lg-3 control-label' %>
-    <div class="col-lg-6">
+    <%= f.label :comment, :class => 'col-lg-3 col-md-3 control-label' %>
+    <div class="col-lg-6 col-md-6">
       <%= f.text_area :comment, :class => 'form-control', :placeholder => "Your comment here" %>
     </div>
   </div>
   <%= f.hidden_field :video_post_id, :value => @video_post.id %> 
   <div class="form-group">
-  	<div class="col-lg-6 col-lg-offset-3">
+  	<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
     <%= f.submit "Post Comment", :class => 'btn btn-primary' %>
   	</div>
   </div>    
@@ -142,7 +142,7 @@
 </div> 
 
 </div>
-<div class="col-lg-4">
+<div class="col-lg-4 col-md-4">
 <%= render 'shared/search_bar' %> 	
 
 <% if  @posts.empty? %>
